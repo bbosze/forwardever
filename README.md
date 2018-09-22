@@ -1,2 +1,3 @@
 Useful app for runners.
-Calculating finishing time based on pace.
+Get your marathon time!
+(Calculates finishing time based on pace.)
