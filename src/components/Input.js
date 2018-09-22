@@ -5,31 +5,42 @@ class GetTime extends Component {
     return (
       <div className="App-Input">
         <form onSubmit={ this.props.handleChange } className="App-Form">
-<div>
-          <label>Your pace is: </label>
-          <input
+          <div>
+            <label>If your pace is </label>
+            <input
             required
-            className="Input-field"
+            className="Input-pace"
             type="number"
             name="minutes"
             min="0"
             max="30"
             onChange={this.props.onChange}/>
-          <label>minutes</label>
-          <input
+            <label>minutes</label>
+            <input
             required
-            className="Input-field"
+            className="Input-pace"
             type="number"
             name="seconds"
             min="0"
             max="59"
             onChange={this.props.onChange}/>
-          <label>seconds</label>
-    </div>
+            <label>seconds</label>
+          </div>
+          <div>
+            <label>...and the distance is: </label>
+            <input
+              type="number"
+              name="distance"
+              className="Input-distance"
+              value={this.props.distance}
+              // onChange={this.props.onChange}
+            />
+            <label>km(s) </label>
+          </div>
           <input
             type="submit"
             className="Submit-button"
-            value="Get time!"
+            value="Gimmi di time!"
             onSubmit={ this.props.handleChange }/>
         </form>
       </div>

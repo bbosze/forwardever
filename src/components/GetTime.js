@@ -8,6 +8,7 @@ class GetTime extends Component {
     seconds: 0,
     result: '...',
     distance: 42.195,
+    speed: '...',
   }
 
   convertToSeconds = (pace) => {
@@ -22,6 +23,7 @@ class GetTime extends Component {
     })
     let tempoInSeconds = this.convertToSeconds(this.state.pace);
     let fullTimeInSeconds = this.state.distance * tempoInSeconds;
+    let speed = 3600/tempoInSeconds
     let date = new Date(fullTimeInSeconds * 1000);
     let hh = date.getUTCHours();
     let mm = date.getUTCMinutes();
@@ -32,6 +34,7 @@ class GetTime extends Component {
     let result = hh+":"+mm+":"+ss;
     await this.setState({
       result,
+      speed: parseFloat(speed).toFixed(2),
     })
   }
 
@@ -58,6 +61,11 @@ class GetTime extends Component {
         seconds: 0,
       })
     }
+    else if (name === 'distance') {
+      await this.setState({
+        distance: value,
+      })
+    }
   }
 
   handleSubmit = (e) => {
@@ -71,8 +79,10 @@ class GetTime extends Component {
         <Input
           onChange={ this.onChange }
           handleChange={ this.handleSubmit }
-          minutes={this.state.minutes}/>
-        <h2>Your marathon time is { this.state.result }</h2>
+          minutes={this.state.minutes}
+          distance={this.state.distance}/>
+        <p className="Result">Your finishing time will be <span className="Result-number">{ this.state.result }</span></p>
+        <p className="Result">...and your average speed is <span className="Result-number">{ this.state.speed }</span> km/h</p>
       </div>
     );
   }

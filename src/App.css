@@ -1,14 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 body {
-  background: #d8bfd8;
+  background-image: url(./img/app-background.jpg);
+  background-repeat: no-repeat;
+  /* background-position: center center; */
+  background-attachment: fixed;
+  background-size: cover;
   font-family: 'Roboto', sans-serif;
 }
 
 .App {
-  text-align: center;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -17,33 +21,80 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0;
 }
 
-.Input-field {
+.Input-pace {
   width: 30px;
   outline: none !important;
   height: 30px;
   border-radius: 10px;
-  border: 2px solid grey;
+  border: 2px solid #333B3E;
   text-align: center;
   font-size: 1rem;
   margin-left: 1rem;
   margin-right: 0.5rem;
 }
 
-.Submit-button {
-  width: 100px;
+.Input-distance {
+  width: 60px;
   outline: none !important;
   height: 30px;
   border-radius: 10px;
-  border: 2px solid grey;
+  border: 2px solid #333B3E;
+  text-align: center;
+  font-size: 1rem;
+  margin: 1rem
+}
+
+
+
+.Submit-button {
+  width: 100%;
+  outline: none !important;
+  height: 30px;
+  border-radius: 10px;
+  border: 2px solid #333B3E;
+  background: #333B3E;
   text-align: center;
   font-size: 1rem;
   margin-left: 1rem;
   display: block;
   margin-top: 1rem;
+  color: #FEFBF2;
 }
 
 .App-Form {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.App-Gettime {
+  color: #333B3E;
+  width: 350px;
+  background: #fff;
+  border-radius: 5px;
+  display: inline-block;
+  margin-top: 13%;
+  box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  position: relative;
+  transition:all 0.3s ease;
+  animation: 2s move;
+  padding: 3%;
+}
+
+.Result {
+  font-size: 1.3rem;
+}
+
+.Result-number {
+  color: #94985C;
+}
+
+@keyframes move {
+  from {
+      left: -105%;
+  }
+  to {
+      left: 0%;
+  }
 }
