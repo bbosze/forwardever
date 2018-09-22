@@ -28,14 +28,15 @@ class GetTime extends Component {
           </div>
           <div>
             <label>...and the distance is: </label>
-            <input
+            <p>{this.props.distance} km(s)</p>
+            {/* <input
               type="number"
               name="distance"
               className="Input-distance"
               value={this.props.distance}
               // onChange={this.props.onChange}
-            />
-            <label>km(s) </label>
+            /> */}
+            {/* <label>km(s) </label> */}
           </div>
           <input
             type="submit"
