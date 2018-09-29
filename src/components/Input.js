@@ -3,40 +3,54 @@ import React, { Component } from 'react';
 class GetTime extends Component {
   render() {
     return (
-      <div className="App-Input">
         <form onSubmit={ this.props.handleChange } className="App-Form">
-          <div>
-            <label>If your pace is </label>
-            <input
-            required
-            className="Input-pace"
-            type="number"
-            name="minutes"
-            min="0"
-            max="30"
-            onChange={this.props.onChange}/>
-            <label>minutes</label>
-            <input
-            required
-            className="Input-pace"
-            type="number"
-            name="seconds"
-            min="0"
-            max="59"
-            onChange={this.props.onChange}/>
-            <label>seconds</label>
+          <label>If your pace is </label>
+          <div className="inputcontainer">
+            <div className="single-inputfield">
+              <input
+                required
+                className="input"
+                type="number"
+                name="minutes"
+                min="0"
+                max="30"
+                onChange={this.props.onChange}/>
+                <label>minutes</label>
+              </div>
+              <div className="single-inputfield">
+                <input
+                  required
+                  className="input"
+                  type="number"
+                  name="seconds"
+                  min="0"
+                  max="59"
+                  onChange={this.props.onChange}/>
+                  <label>seconds</label>
+              </div>
           </div>
-          <div>
-            <label>...and the distance is: </label>
-            <p>{this.props.distance} km(s)</p>
-            {/* <input
-              type="number"
-              name="distance"
-              className="Input-distance"
-              value={this.props.distance}
-              // onChange={this.props.onChange}
-            /> */}
-            {/* <label>km(s) </label> */}
+          <label className="distance">...and the distance is: </label>
+          <div className="inputcontainer">
+            <div className="single-inputfield">
+              <input
+                type="number"
+                name="kilometers"
+                className="input"
+                value={this.props.distance}
+                onChange={this.props.onChange}
+              />
+              <label>kilometer(s) </label>
+            </div>
+            <div className="single-inputfield">
+              <input
+                type="number"
+                name="meters"
+                className="input"
+                value={this.props.distance}
+                onChange={this.props.onChange}
+              />
+              <label>meter(s) </label>
+            </div>
           </div>
           <input
             type="submit"
@@ -44,7 +58,6 @@ class GetTime extends Component {
             value="Gimmi di time!"
             onSubmit={ this.props.handleChange }/>
         </form>
-      </div>
     );
   }
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Input from './Input'
+import Input from './Input';
+import { getMarathonTime } from '../assets/getMarathonTime';
 
 class GetTime extends Component {
   state = {
@@ -7,35 +8,10 @@ class GetTime extends Component {
     minutes: 0,
     seconds: 0,
     result: '...',
-    distance: 42.195,
+    kilometers: 0,
+    meters: 0,
+    distance: 0,
     speed: '...',
-  }
-
-  convertToSeconds = (pace) => {
-    let a = pace.split(':');
-    let seconds = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2]);
-    return seconds;
-  }
-
-  getMarathonTime = async() => {
-    await this.setState({
-      pace: `00:${this.state.minutes}:${this.state.seconds}`
-    })
-    let tempoInSeconds = this.convertToSeconds(this.state.pace);
-    let fullTimeInSeconds = this.state.distance * tempoInSeconds;
-    let speed = 3600/tempoInSeconds
-    let date = new Date(fullTimeInSeconds * 1000);
-    let hh = date.getUTCHours();
-    let mm = date.getUTCMinutes();
-    let ss = date.getSeconds();
-    if (hh < 10) {hh = "0"+hh;}
-    if (mm < 10) {mm = "0"+mm;}
-    if (ss < 10) {ss = "0"+ss;}
-    let result = hh+":"+mm+":"+ss;
-    await this.setState({
-      result,
-      speed: parseFloat(speed).toFixed(2),
-    })
   }
 
   onChange = async (e) => {
@@ -61,28 +37,59 @@ class GetTime extends Component {
         seconds: 0,
       })
     }
-    else if (name === 'distance') {
+    else if (name === 'kilometers') {
       await this.setState({
-        distance: value,
+        kilometers: parseInt(value, 10),
       })
     }
+    else if (name === 'meters') {
+      await this.setState({
+        meters: parseInt(value, 10) / 1000,
+      })
+    }
+    if (!await this.state.meters) {
+      await this.setState({
+        meters: 0,
+      })
+    }
+    if (!await this.state.kilometers) {
+      await this.setState({
+        kilometers: 0,
+      })
+    }
+
+    await this.setState({
+      pace: `00:${this.state.minutes}:${this.state.seconds}`,
+      distance: this.state.kilometers + this.state.meters,
+    })
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.getMarathonTime();
+    let resultObj = getMarathonTime(this.state.pace, this.state.distance)
+
+    this.setState ({
+      result: resultObj.result,
+      speed: resultObj.speed,
+    })
   }
 
   render() {
     return (
       <div className="App-Gettime">
+        <h1>Get your finishing time!</h1>
         <Input
           onChange={ this.onChange }
           handleChange={ this.handleSubmit }
-          minutes={this.state.minutes}
-          distance={this.state.distance}/>
-        <p className="Result">Your finishing time will be <span className="Result-number">{ this.state.result }</span></p>
-        <p className="Result">...and your average speed is <span className="Result-number">{ this.state.speed }</span> km/h</p>
+        />
+        <div className="App-Results">
+          <div className="Result">Your finishing time will be
+            <div className="Result-number">{ this.state.result }</div>
+          </div>
+          <div className="Result">...and your average speed is
+            <div className="Result-number">{ this.state.speed }</div> km/h
+          </div>
+      </div>
       </div>
     );
   }

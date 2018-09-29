@@ -12,7 +12,7 @@ body {
 .App {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items:flex-start;
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -21,20 +21,8 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0;
 }
 
-.Input-pace {
-  width: 30px;
-  outline: none !important;
-  height: 30px;
-  border-radius: 10px;
-  border: 2px solid #333B3E;
-  text-align: center;
-  font-size: 1rem;
-  margin-left: 1rem;
-  margin-right: 0.5rem;
-}
-
-.Input-distance {
-  width: 60px;
+.input {
+  width: 50px;
   outline: none !important;
   height: 30px;
   border-radius: 10px;
@@ -50,7 +38,6 @@ p {
   font-size: 1.3rem;
 }
 
-
 .Submit-button {
   width: 100%;
   outline: none !important;
@@ -60,16 +47,22 @@ p {
   background: #333B3E;
   text-align: center;
   font-size: 1rem;
-  margin-left: 1rem;
   display: block;
-  margin-top: 1rem;
   color: #FEFBF2;
+  margin-top: 1rem;
 }
 
-.App-Form {
+.App-Results {
+  margin-top: 1rem;
+}
+
+.inputcontainer {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-around;
+  align-items: baseline;
+}
+.single-inputfield {
+  width: 180px;
 }
 
 .App-Gettime {
@@ -77,10 +70,12 @@ p {
   width: 350px;
   background: #fff;
   border-radius: 5px;
-  display: inline-block;
-  margin-top: 13%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10%;
   box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.6);
-  padding: 20px;
+  padding: 1rem;
   position: relative;
   transition:all 0.3s ease;
   animation: 2s move;
@@ -89,10 +84,12 @@ p {
 
 .Result {
   font-size: 1.3rem;
+  text-align: center;
 }
 
 .Result-number {
   color: #94985C;
+  margin-top: 1rem;
 }
 
 @keyframes move {
