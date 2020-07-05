@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Input from './Input';
+import AdSense from './AdSense'
+import AdblockDetector from './AdblockDetector';
 import { getMarathonTime } from '../assets/getMarathonTime';
 
 class GetTime extends Component {
@@ -68,7 +70,7 @@ class GetTime extends Component {
     e.preventDefault();
     let resultObj = getMarathonTime(this.state.pace, this.state.distance)
 
-    this.setState ({
+    this.setState({
       result: resultObj.result,
       speed: resultObj.speed,
     })
@@ -76,20 +78,25 @@ class GetTime extends Component {
 
   render() {
     return (
-      <div className="App-Gettime">
-        <h1>Get your finishing time!</h1>
-        <Input
-          onChange={ this.onChange }
-          handleChange={ this.handleSubmit }
-        />
-        <div className="App-Results">
-          <div className="Result">Your finishing time will be
-            <div className="Result-number">{ this.state.result }</div>
+      <div>
+        <AdSense height="300px" adBlocker />
+        <AdSense height="300px" adBlocker={false} />
+        <div className="App-Gettime">
+          <AdblockDetector />
+          <h1>Get your finishing time!</h1>
+          <Input
+            onChange={this.onChange}
+            handleChange={this.handleSubmit}
+          />
+          <div className="App-Results">
+            <div className="Result">Your finishing time will be
+            <div className="Result-number">{this.state.result}</div>
+            </div>
+            <div className="Result">...and your average speed is
+            <div className="Result-number">{this.state.speed}</div> km/h
           </div>
-          <div className="Result">...and your average speed is
-            <div className="Result-number">{ this.state.speed }</div> km/h
           </div>
-      </div>
+        </div>
       </div>
     );
   }
