@@ -11,8 +11,31 @@ body {
 
 .App {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   align-items:flex-start;
+}
+
+.gettime-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+ul {
+  display: flex;
+  list-style-type: none;
+  cursor: pointer;
+}
+
+li {
+  margin-right: 30px;
+}
+
+.Food {
+  padding: 100px;
+  background-color: white;
+  border-radius: 10px;
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -66,6 +89,7 @@ p {
 }
 
 .App-Gettime {
+  flex: 1;
   color: #333B3E;
   width: 350px;
   background: #fff;

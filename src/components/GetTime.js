@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Input from './Input';
 import AdSense from './AdSense'
-import AdblockDetector from './AdblockDetector';
 import { getMarathonTime } from '../assets/getMarathonTime';
 
 class GetTime extends Component {
@@ -78,11 +77,8 @@ class GetTime extends Component {
 
   render() {
     return (
-      <div>
-        <AdSense height="300px" adBlocker />
-        <AdSense height="300px" adBlocker={false} />
-        <div className="App-Gettime">
-          <AdblockDetector />
+      <div className="gettime-wrapper">
+        <div className="App-Gettime" >
           <h1>Get your finishing time!</h1>
           <Input
             onChange={this.onChange}
@@ -96,8 +92,8 @@ class GetTime extends Component {
             <div className="Result-number">{this.state.speed}</div> km/h
           </div>
           </div>
-        </div>
-      </div>
+        </div >
+      </div >
     );
   }
 }
