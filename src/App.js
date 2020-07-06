@@ -27,7 +27,7 @@ class App extends Component {
           <Route path="/etelek">
             <Food />
           </Route>
-          <Redirect exact from="/" to="/gettime" />
+          <Redirect exact from="/" to="/tippek" />
         </div>
       </ Router>
     );

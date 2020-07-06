@@ -14,6 +14,7 @@ body {
   flex-direction: column;
   align-items: center;
   align-items:flex-start;
+  padding: 40px;
 }
 
 .gettime-wrapper {
@@ -30,6 +31,13 @@ ul {
 
 li {
   margin-right: 30px;
+  font-size: 14px;
+}
+
+.foodlist {
+  flex-direction: column;
+  list-style-type: circle;
+  cursor: initial;
 }
 
 .Food {
@@ -58,7 +66,7 @@ input[type=number]::-webkit-outer-spin-button {
 p {
   color: #333B3E;
   font-weight: bold;
-  font-size: 1.3rem;
+  font-size: 14px;
 }
 
 .Submit-button {
